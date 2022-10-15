@@ -10,8 +10,14 @@
 int _printf(const char *format, ...)
 {
 	int ch;
+	va_list args;
 
-	ch = printf(format, ...);
+	if (format == NULL)
+		return (-1);
+
+	va_start(args, format);
+
+	ch = printf(format, args, args);
 
 	return (ch);
 }
