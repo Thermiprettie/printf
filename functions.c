@@ -98,14 +98,38 @@ int print_i(va_list args)
 {
 	return (print_d(args));
 }
-unsigned int print_b(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len)
+/**
+ * print_b - prints unsigned int
+ * @args: integer argument
+ * Return: the decimal function
+ */
+int print_b(va_list va)
 {
-	unsigned int num;
+	int i, len, r, l;
+	long int  num, numt;
+	unsigned int n = va_arg(va, unsigned int);
 
-	num = va_arg(args, unsigned int);
-
-	(void)len;
-
-	return (convert_ubase(output, num, "01", flags, wid, prec));
+	len = 0;
+	i = 0;
+	r = 1;
+	l = 1;
+	num = n;
+	while (num > 0)
+	{
+		num /= 10;
+		i++;
+	}
+	while (r < i)
+	{
+		l *= 10;
+		r++;
+	}
+	while (l >= 1)
+	{
+		numt = (n / l) % 10;
+		_putchar(numt + '0');
+		len++;
+		l /= 10;
+	}
+	return (len);
 }
