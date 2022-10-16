@@ -9,7 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-	int ch;
+	int ch, i;
 	va_list args;
 
 	if (format == NULL)
@@ -17,7 +17,11 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	ch = printf("%c\n" format, args, args);
+	for (i = 0; i < args; i++)
+	{
+		printf(format, args[i], args[i]);
+		ch++;
+	}
 
 	return (ch);
 }
