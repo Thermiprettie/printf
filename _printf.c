@@ -19,8 +19,7 @@ int _printf(const char *format, ...)
 
 	for (i = 0; i < args; i++)
 	{
-		printf(format, args[i], args[i]);
-		ch++;
+		ch += printf(format, args[i], args[i]);
 	}
 
 	return (ch);
