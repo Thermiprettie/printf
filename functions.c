@@ -105,31 +105,24 @@ int print_i(va_list args)
  */
 int print_b(va_list va)
 {
-	int i, len, r, l;
-	long int  num, numt;
-	unsigned int n = va_arg(va, unsigned int);
+	unsigned int c;
+	int  i, j;
+	int arr[100];
 
-	len = 0;
+	c = va_arg(va, int);
 	i = 0;
-	r = 1;
-	l = 1;
-	num = n;
-	while (num > 0)
+	if (c == 0)
 	{
-		num /= 10;
+		_putchar('0');
+		return (1);
+	}
+	while (c > 0)
+	{
+		arr[i] = c % 2;
+		c = c / 2;
 		i++;
 	}
-	while (r < i)
-	{
-		l *= 10;
-		r++;
-	}
-	while (l >= 1)
-	{
-		numt = (n / l) % 10;
-		_putchar(numt + '0');
-		len++;
-		l /= 10;
-	}
-	return (len);
+	for (j = i - 1; j >= 0; j--)
+		_putchar(arr[j] + '0');
+	return (i);
 }
