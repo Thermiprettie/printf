@@ -39,5 +39,8 @@ int print_r(va_list va);
 int print_R(va_list va);
 char *malloc_str(char *str);
 char *rot13(char *p);
+int t_char(va_list va)
+int t_string(va_list va)
+int print_number(va_list va)
 
 #endif
