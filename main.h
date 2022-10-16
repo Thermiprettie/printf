@@ -33,6 +33,7 @@ int print_u(va_list va);
 int print_o(va_list va);
 int print_x(va_list va);
 int print_X(va_list va);
-int print_S(va_list va);
+int print_p(va_list va);
+int print_p_1(unsigned long int c);
 
 #endif

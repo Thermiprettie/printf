@@ -1,49 +1,60 @@
 #include "main.h"
 
 /**
- *stringhexa - Entry point
- *@va: argument tipo char * we want to change
- *Return: no return
- */
-int print_S(va_list va)
+* pointer - print a
+*@va:argument
+*
+* Return: length
+*/
+int print_p(va_list va)
 {
-	int i;
-	int len;
-	char *s;
-	char n[] = "(null)";
-	unsigned int h;
+	void *p;
+	char *n = "(nil)";
+	long int cast;
+	int a, i;
 
-	len = 0;
-	s = va_arg(va, char *);
-	if (s == NULL)
+	p = va_arg(va, void*);
+	if (p == NULL)
 	{
 		for (i = 0; n[i] != '\0'; i++)
 			_putchar(n[i]);
-		return (6);
+		return (i);
 	}
-	for (i = 0; s[i] != '\0'; i++)
+	cast = (unsigned long int)p;
+	_putchar('0');
+	_putchar('x');
+	a = print_p_1(cast);
+	return (a + 2);
+}
+/**
+ * hexa_pointer - print a
+ *@c:unsigned long int to convert in hexa
+ *
+ * Return: length
+ */
+int print_p_1(unsigned long int c)
+{
+	int  i, j, temp;
+	int arr[100];
+
+	i = 0;
+	temp = 0;
+	if (c == 0)
 	{
-		if (s[i] < 32 || s[i] >= 127)
-		{
-			_putchar('\\');
-			_putchar('x');
-			len = len + 2;
-			h = s[i];
-			if (h < 16)
-			{
-				_putchar ('0');
-				len++;
-
-			}
-			len = len + hexa_special(h);
-		}
-		else
-		{
-
-			_putchar(s[i]);
-			len++;
-
-		}
+		_putchar('0');
+		return (1);
 	}
-	return (len);
+	while (c != 0)
+	{
+		temp = c % 16;
+		if (temp < 10)
+			arr[i] = 48 + temp;
+		else
+			arr[i] = 87 + temp;
+		c = c / 16;
+		i++;
+	}
+	for (j = i - 1; j >= 0; j--)
+		_putchar(arr[j]);
+	return (i);
 }
