@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* pointer - print a
+* print_p - print a
 *@va:argument
 *
 * Return: length
@@ -27,7 +27,7 @@ int print_p(va_list va)
 	return (a + 2);
 }
 /**
- * hexa_pointer - print a
+ * print_p_1 - print a
  *@c:unsigned long int to convert in hexa
  *
  * Return: length
@@ -57,4 +57,33 @@ int print_p_1(unsigned long int c)
 	for (j = i - 1; j >= 0; j--)
 		_putchar(arr[j]);
 	return (i);
+}
+
+/**
+ * print_r - Entry point
+ * @va: pointer the string we want to reverse and print
+ *
+ * Return: no return
+ */
+int print_r(va_list va)
+{
+	int i, j;
+	char *s;
+	char n[] = "(null)";
+
+
+	s = va_arg(va, char *);
+	i = 0;
+	if (s == NULL)
+	{
+		for (i = 0; n[i] != '\0'; i++)
+			_putchar(n[i]);
+		return (6);
+	}
+	j = 0;
+	while (s[j] != '\0')
+		j++;
+	for (i = j - 1; i >= 0; i--)
+		_putchar (s[i]);
+	return (j);
 }
