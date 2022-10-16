@@ -99,7 +99,7 @@ int print_i(va_list args)
 	return (print_d(args));
 }
 /**
- * print_b - prints unsigned int
+ * print_b - prints unsigned
  * @args: integer argument
  * Return: the decimal function
  */
