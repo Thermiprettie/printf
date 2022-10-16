@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	ch = printf("%c\n", format, args, args);
+	ch = printf("%c\n" format, args, args);
 
 	return (ch);
 }
