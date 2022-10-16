@@ -126,3 +126,138 @@ int print_b(va_list va)
 		_putchar(arr[j] + '0');
 	return (i);
 }
+
+/**
+ * print_u - prints u
+ * @args: arguments
+ * Return: int
+ */
+
+int print_u(va_list va)
+{
+	int i, len, r, l;
+	long int  num, numt;
+	unsigned int n = va_arg(va, unsigned int);
+
+	len = 0;
+	i = 0;
+	r = 1;
+	l = 1;
+	num = n;
+	while (num > 0)
+	{
+		num /= 10;
+		i++;
+	}
+	while (r < i)
+	{
+		l *= 10;
+		r++;
+	}
+	while (l >= 1)
+	{
+		numt = (n / l) % 10;
+		_putchar(numt + '0');
+		len++;
+		l /= 10;
+	}
+	return (len);
+}
+
+/**
+ * print_o - print o
+ * @args: arguments
+ * Return: int
+ */
+int print_o(va_list va)
+{
+	unsigned int c;
+	int  i, j;
+	int arr[100];
+
+	c = va_arg(va, unsigned int);
+	i = 0;
+	if (c == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	while (c != 0)
+	{
+		arr[i] = c % 8;
+		c = c / 8;
+		i++;
+	}
+	for (j = i - 1; j >= 0; j--)
+		_putchar(arr[j] + '0');
+	return (i);
+}
+
+/**
+ * print_x - print x
+ * @args: arguments
+ * Return: int
+ */
+
+int print_x(va_list va)
+{
+	unsigned int c;
+	int  i, j, temp;
+	int arr[100];
+
+	c = va_arg(va, unsigned int);
+	i = 0;
+	temp = 0;
+	if (c == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	while (c != 0)
+	{
+		temp = c % 16;
+		if (temp < 10)
+			arr[i] = 48 + temp;
+		else
+			arr[i] = 87 + temp;
+		c = c / 16;
+		i++;
+	}
+	for (j = i - 1; j >= 0; j--)
+		_putchar(arr[j]);
+	return (i);
+}
+
+/**
+ * print_X - prints X
+ * @va: unsigned int
+ * Return: int
+ */
+int print_X(va_list va)
+{
+	unsigned int c;
+	int  i, j, temp;
+	int arr[100];
+
+	c = va_arg(va, unsigned int);
+	i = 0;
+	temp = 0;
+	if (c == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	while (c != 0)
+	{
+		temp = c % 16;
+		if (temp < 10)
+			arr[i] = 48 + temp;
+		else
+			arr[i] = 55 + temp;
+		c = c / 16;
+		i++;
+	}
+	for (j = i - 1; j >= 0; j--)
+		_putchar(arr[j]);
+	return (i);
+}
