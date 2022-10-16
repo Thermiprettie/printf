@@ -33,6 +33,6 @@ int print_u(va_list va);
 int print_o(va_list va);
 int print_x(va_list va);
 int print_X(va_list va);
-int print_S(va_list va);
+int print_S1(va_list va);
 
 #endif

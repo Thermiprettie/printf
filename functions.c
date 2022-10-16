@@ -266,7 +266,7 @@ int print_X(va_list va)
  *@va: argument tipo char * we want to change
  *Return: no return
  */
-int print_S(va_list va)
+int print_S1(va_list va)
 {
 	int i;
 	int len;
