@@ -261,3 +261,4 @@ int print_X(va_list va)
 		_putchar(arr[j]);
 	return (i);
 }
+
