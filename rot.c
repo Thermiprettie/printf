@@ -3,7 +3,7 @@
 
 /**
 *print_R - Print a string in rot13
-*@va: va_list arguments
+*@R: va_list arguments
 *Return: string
 */
 
