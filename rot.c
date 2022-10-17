@@ -9,69 +9,25 @@
 
 int print_R(va_list va)
 {
+	int j, i, count = 0;
+	char *r;
+	char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz";
+	char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLM nopqrstuvwxyzabcdefghijklm";
 
-	char *s;
-	int i;
-	char n[] = "(null)";
-
-	s = rot13(malloc_str(va_arg(va, char *)));
-	if (s == NULL)
+	r = va_arg(R, char *);
+	if (r == NULL)
+		r = "(null)";
+	for (j = 0; r[j] != '\0'; j++)
 	{
-		for (i = 0; n[i] != '\0'; i++)
-			_putchar(n[i]);
-		return (6);
-	}
-	for (i = 0; s[i] != '\0'; i++)
-		_putchar(s[i]);
-	free(s);
-	return (i);
-}
-
-/**
-*malloc_str - create a new space in memory to copy the string
-*@str: string
-*Return: string
-*/
-
-char *malloc_str(char *str)
-{
-	char *copy;
-	unsigned int j, i;
-
-	if (str ==  NULL)
-		return (NULL);
-	for (i = 0; str[i] != '\0'; i++)
-		;
-	copy = malloc((i + 1) * sizeof(char));
-	if (copy == NULL)
-		return (NULL);
-	for (j = 0; j <= i; j++)
-		copy[j] = str[j];
-	return (copy);
-}
-
-/**
- *rot13 - String to rot13
- *@p: pointer the string we want to convert in rot13
- *Return: string
- */
-char *rot13(char *p)
-{
-	int j;
-	int i;
-	char a1[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
-	char a2[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
-
-	for (j = 0; p[j] != '\0'; j++)
-	{
-		for (i = 0; a1[i] != '\0'; i++)
+		for (i = 0; input[i] != '\0'; i++)
 		{
-			if (p[j] == a1[i])
+			if (r[j] == input[i])
 			{
-				p[j] = a2[i];
+				_putchar(output[i]);
+				count++;
 				break;
 			}
 		}
 	}
-	return (p);
+	return (count);
 }
