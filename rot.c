@@ -7,7 +7,7 @@
 *Return: string
 */
 
-int print_R(va_list va)
+int print_R(va_list R)
 {
 	int j, i, count = 0;
 	char *r;
