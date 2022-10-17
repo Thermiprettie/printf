@@ -40,6 +40,5 @@ int print_R(va_list R);
 int t_char(va_list va);
 int t_string(va_list va);
 int print_number(va_list va);
-int flag_char(const char *format, int *i);
 
 #endif
