@@ -1,44 +1,93 @@
 #ifndef MAIN_H
 #define MAIN_H
-
-/**
- * File: main.h
- */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
+
+#define UNUSED(x) (void)(x)
+#define BUFF_SIZE 1024
+
+#define F_MINUS 1
+#define F_PLUS 2
+#define F_ZERO 4
+#define F_HASH 8
+#define F_SPACE 16
+
+#define S_LONG 2
+#define S_SHORT 1
 
 /**
- * struct specifier - struct specifier
- * @valid: the valid character
- * @f: the functions associated
+ * struct fmt - Struct op
+ *
+ * @fmt: The format
+ * @fn: The function associated
  */
-typedef struct specifier
+struct fmt
 {
-	char *valid;
-	int (*f)(va_list);
-} spec;
+	char fmt;
+	int (*fn)(va_list, char[], int, int, int, int);
+};
+
+
+/**
+ * typedef struct fmt fmt_t - Struct op
+ *
+ * @fmt: The format
+ * @fm_t: The function associated
+ */
+typedef struct fmt fmt_t;
+
 int _printf(const char *format, ...);
-int print_c(va_list args);
-int _putchar(char c);
-int print_percent(va_list args);
-int print_s(va_list args);
-int print_d(va_list args);
-int print_i(va_list args);
-int (*get_func(char x))(va_list args);
-int print_b(va_list va);
-int print_u(va_list va);
-int print_o(va_list va);
-int print_x(va_list va);
-int print_X(va_list va);
-int print_p(va_list va);
-int print_p_1(unsigned long int c);
-int print_r(va_list va);
-int print_R(va_list R);
-int t_char(va_list va);
-int t_string(va_list va);
-int print_number(va_list va);
+void print_buffer(char buffer[], int *buff_ind);
+int get_func(const char *fmt, int *i,
+va_list list, char buffer[], int flags, int width, int precision, int size);
+int print_c(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_s(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_percent(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_i(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_b(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_u(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_o(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_x(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_X(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_hexa(va_list types, char map_to[],
+char buffer[], int flags, char flag_ch, int width, int precision, int size);
+int print_S(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_p(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int handle_flags(const char *format, int *i);
+int handle_width(const char *format, int *i, va_list list);
+int handle_precision(const char *format, int *i, va_list list);
+int handle_size(const char *format, int *i);
+int print_r(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_rot13(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int handle_write_char(char c, char buffer[],
+	int flags, int width, int precision, int size);
+int write_number(int is_positive, int ind, char buffer[],
+	int flags, int width, int precision, int size);
+int write_num(int ind, char bff[], int flags, int width, int precision,
+	int length, char padd, char extra_c);
+int write_pointer(char buffer[], int ind, int length,
+	int width, int flags, char padd, char extra_c, int padd_start);
+int write_unsgnd(int is_negative, int ind,
+char buffer[],
+	int flags, int width, int precision, int size);
+int is_printable(char);
+int append_hexa_code(char, char[], int);
+int is_digit(char);
+long int convert_size_number(long int num, int size);
+long int convert_size_unsgnd(unsigned long int num, int size);
 
 #endif
