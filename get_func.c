@@ -29,8 +29,6 @@ int get_func(const char *fmt, int *ind, va_list list, char buffer[],
 		{'X', print_X},
         {'p', print_p},
         {'S', print_S},
-		{'r', print_r},
-        {'R', print_rot13},
         {'\0', NULL}
 	};
 	for (i = 0; fmt_types[i].fmt != '\0'; i++)
