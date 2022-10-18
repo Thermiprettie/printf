@@ -17,17 +17,19 @@ int get_func(const char *fmt, int *ind, va_list list, char buffer[],
 {
 	int i, unknow_len = 0, printed_chars = -1;
 	fmt_t fmt_types[] = {
-		{'c', print_c},
+	{'c', print_c},
         {'s', print_s},
         {'%', print_percent},
-		{'i', print_i},
+	{'i', print_i},
         {'d', print_i},
         {'b', print_b},
-		{'u', print_u},
+	{'u', print_u},
         {'o', print_o},
         {'x', print_x},
-		{'X', print_X},
+	{'X', print_X},
         {'p', print_p},
+	{'r', print_r},
+	{'R', print_rot13},
         {'S', print_S},
         {'\0', NULL}
 	};
